@@ -234,6 +234,7 @@ class Action:
         "execute_sparql",
         "get_property_examples",
         "stop",
+        "decompose",
     ]
 
     # All actions have a single input parameter for now

@@ -155,6 +155,7 @@ class PartToWholeParser(BaseParser):
             PartToWholeParser.search_wikidata,
         )
         graph.add_node("get_property_examples", PartToWholeParser.get_property_examples)
+        graph.add_node("decompose", PartToWholeParser.decompose) # NEW
         graph.add_node("reporter", PartToWholeParser.reporter)
         graph.add_node("stop", PartToWholeParser.stop)
 
@@ -170,6 +171,7 @@ class PartToWholeParser(BaseParser):
             "get_wikidata_entry",
             "search_wikidata",
             "get_property_examples",
+            "decompose",  # NEW
         ]:
             graph.add_edge(n, "controller")
         graph.add_edge("stop", "reporter")
@@ -217,6 +219,19 @@ class PartToWholeParser(BaseParser):
                     top_p=0.9,
                     keep_indentation=True,
                 )
+        
+        cls.decompose_chain = (
+            llm_generation_chain(
+                template_file="decompose.prompt",  # create this prompt file
+                engine=engine,
+                max_tokens=400,
+                temperature=0.2,  # possibly tweak
+                keep_indentation=True,
+                output_json=True
+            )
+            | parse_string_to_json
+            | json_to_string  # ensure observation is a pretty JSON string
+        )
 
         # cls.debug_sparql_chain = (
         #     llm_generation_chain(
@@ -440,3 +455,19 @@ class PartToWholeParser(BaseParser):
         )
         state["response"] = response
         return {"response": response}
+    
+    @staticmethod
+    @chain
+    async def decompose(state):
+        current_action = PartToWholeParser.get_current_action(state)
+        assert current_action.action_name == "decompose"
+
+        subqueries = await PartToWholeParser.decompose_chain.ainvoke(
+            {
+                "question": state["question"],
+                "conversation_history": state["conversation_history"],
+                "goal": current_action.action_argument,  # not sure whether this input is necessary
+            }
+        )
+
+        current_action.observation = subqueries
