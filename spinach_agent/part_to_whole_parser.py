@@ -127,6 +127,8 @@ def display_actions(actions):
 
 
 class PartToWholeParser(BaseParser):
+    MAX_RECURSIVE_DEPTH = 1  # Maximum recursion depth
+    
     @classmethod
     def initialize(
         cls,
@@ -140,7 +142,16 @@ class PartToWholeParser(BaseParser):
                 engine=engine,
                 action_counter=0,
                 actions=[],
-                response=""
+                response="",
+                recursive_depth=input.get("recursive_depth", 0),  # Use provided depth or default to 0
+                decomposition_result=None,
+                simple_subquery_result=None,
+                complex_subquery_result=None,
+                is_processing_simple_subquery=False,
+                is_processing_complex_subquery=False,
+                merge_operation=None,
+                original_question=None,
+                simple_subquery_actions=[],
                 # generated_sparqls=[],
             )
 
@@ -155,7 +166,9 @@ class PartToWholeParser(BaseParser):
             PartToWholeParser.search_wikidata,
         )
         graph.add_node("get_property_examples", PartToWholeParser.get_property_examples)
-        graph.add_node("decompose", PartToWholeParser.decompose) # NEW
+        graph.add_node("decompose", PartToWholeParser.decompose)
+        graph.add_node("merge_results", PartToWholeParser.merge_results)
+        graph.add_node("max_depth_handler", PartToWholeParser.max_depth_handler)
         graph.add_node("reporter", PartToWholeParser.reporter)
         graph.add_node("stop", PartToWholeParser.stop)
 
@@ -171,10 +184,15 @@ class PartToWholeParser(BaseParser):
             "get_wikidata_entry",
             "search_wikidata",
             "get_property_examples",
-            "decompose",  # NEW
+            "decompose",
         ]:
             graph.add_edge(n, "controller")
-        graph.add_edge("stop", "reporter")
+        graph.add_conditional_edges(
+            "stop",
+            PartToWholeParser.stop_router,
+        )
+        graph.add_edge("max_depth_handler", "stop")
+        graph.add_edge("merge_results", "reporter")
         graph.add_edge("reporter", END)
 
         # graph.add_edge("execute_sparql", sparql_debugger_router)
@@ -222,15 +240,14 @@ class PartToWholeParser(BaseParser):
         
         cls.decompose_chain = (
             llm_generation_chain(
-                template_file="decompose.prompt",  # create this prompt file
+                template_file="decompose.prompt",
                 engine=engine,
                 max_tokens=400,
-                temperature=0.2,  # possibly tweak
+                temperature=0.2,
                 keep_indentation=True,
                 output_json=True
             )
-            | parse_string_to_json
-            | json_to_string  # ensure observation is a pretty JSON string
+            | parse_string_to_json  # Returns dict directly
         )
 
         # cls.debug_sparql_chain = (
@@ -254,14 +271,40 @@ class PartToWholeParser(BaseParser):
     @staticmethod
     async def router(state):
         move_back_on_duplicate_action = 2
+        
+        # Check recursive depth limit first (prevent infinite recursion)
+        current_depth = state.get("recursive_depth", 0)
+        if current_depth >= PartToWholeParser.MAX_RECURSIVE_DEPTH:
+            # If we have actions and already stopping, continue to stop
+            if len(state.get("actions", [])) > 0:
+                current_action = PartToWholeParser.get_current_action(state)
+                if current_action.action_name == "stop":
+                    return "stop"
+            # Otherwise, route to max_depth_handler to create stop action
+            logger.warning("Maximum recursive depth %d reached in router, routing to stop", PartToWholeParser.MAX_RECURSIVE_DEPTH)
+            return "max_depth_handler"
+        
+        # Get current action (should exist at this point)
         current_action = PartToWholeParser.get_current_action(state)
+        
+        # After decompose, continue with controller (decompose handler already processed both subqueries)
+        if current_action.action_name == "decompose" and state.get("decomposition_result"):
+            return "controller"
+        
+        # If stop action, always route to stop (it will handle complex subquery routing via stop_router)
+        if current_action.action_name == "stop":
+            return "stop"
+        
+        # If we're processing complex subquery, continue with controller
+        if state.get("is_processing_complex_subquery", False):
+            return "controller"
+        
         if current_action in state["actions"][-5:-1]:
             logger.warning(
                 "Took duplicate action %s, going back %d steps.",
                 current_action.action_name,
                 move_back_on_duplicate_action,
             )
-            # current_action.observation = "I have already taken this action. I should not repeat the same action twice."
             # Remove generated_sparqls as well
             if len(state["actions"]) - 2 >= 0:
                 for i in range(len(state["actions"]) - 2, -1, -1):
@@ -279,27 +322,14 @@ class PartToWholeParser(BaseParser):
     @staticmethod
     @chain
     async def controller(state):
-        # if state["actions"]:
-            # print("last action = ", state["actions"][-1])
-            # sys.stdout.flush()
+        current_depth = state.get("recursive_depth", 0)
+        logger.info("Running for question %s with depth %d", state["question"], current_depth)
 
         # make the history shorter
         actions = state["actions"]
         action_history = display_actions(actions)
 
-        # try two times if there is an assertion error,
-        # happens if an action not specified is chosen
-        # if fails after 2 times, end the reasoning.
-        # attempts = 2
-        # for attempt in range(attempts):
-        #     try:
-        #         action = await PartToWholeParser.controller_chain.ainvoke(
-        #             {"question": state["question"], "action_history": action_history}
-        #         )
-        #         return {"actions": action, "action_counter": 1}
-        #     except AssertionError:
-        #         if attempt == attempts - 1:
-        #             return {"actions": Action(thought="", action_name="stop", action_argument=""), "action_counter": 1}
+        logger.info("Invoking controller chain with depth %d", current_depth)
         action = await PartToWholeParser.controller_chain.ainvoke(
             {
                 "conversation_history": state["conversation_history"],
@@ -307,7 +337,7 @@ class PartToWholeParser(BaseParser):
                 "action_history": action_history
             }
         )
-        # print("controller output = ", action)
+        logger.info("Finishing controller chain with depth %d", current_depth)
         return {"actions": action, "action_counter": 1}
 
     @staticmethod
@@ -402,6 +432,32 @@ class PartToWholeParser(BaseParser):
     async def stop(state):
         current_action = PartToWholeParser.get_current_action(state)
         assert current_action.action_name == "stop"
+        
+        # If we're processing complex subquery, handle it even without valid SPARQL
+        if state.get("is_processing_complex_subquery", False):
+            original_question = state.get("original_question", state["question"])
+            # Check if we have a valid SPARQL result
+            if (
+                len(state.get("generated_sparqls", [])) > 0
+                and state["generated_sparqls"][-1].has_results()
+            ):
+                final_sparql = state["generated_sparqls"][-1]
+                if final_sparql.sparql.strip().endswith("LIMIT 10"):
+                    logger.info("Removing LIMIT 10 from the final SPARQL")
+                    s = final_sparql.sparql.strip()[:-len("LIMIT 10")]
+                    final_sparql = SparqlQuery(sparql=s)
+                    final_sparql.execute()
+                complex_result = final_sparql
+            else:
+                logger.warning("Complex subquery did not produce valid SPARQL, storing None")
+                complex_result = None
+            
+            return {
+                "complex_subquery_result": complex_result,
+                "question": original_question,  # Restore original question
+            }
+        
+        # Normal stop handling (not processing complex subquery)
         for s in state["generated_sparqls"]:
             assert isinstance(s, SparqlQuery)
         if (
@@ -421,6 +477,7 @@ class PartToWholeParser(BaseParser):
             s = final_sparql.sparql.strip()[:-len("LIMIT 10")]
             final_sparql = SparqlQuery(sparql=s)
             final_sparql.execute()
+        
         return {"final_sparql": final_sparql}
 
     @staticmethod
@@ -462,12 +519,131 @@ class PartToWholeParser(BaseParser):
         current_action = PartToWholeParser.get_current_action(state)
         assert current_action.action_name == "decompose"
 
-        subqueries = await PartToWholeParser.decompose_chain.ainvoke(
+        logger.info("Initializing decompose step at depth %d", state.get("recursive_depth", 0))
+
+        logger.info("Invoking decompose chain at depth %d", state.get("recursive_depth", 0))
+        decomposition = await PartToWholeParser.decompose_chain.ainvoke(
             {
                 "question": state["question"],
                 "conversation_history": state["conversation_history"],
-                "goal": current_action.action_argument,  # not sure whether this input is necessary
+                "goal": current_action.action_argument,
             }
         )
+        logger.info("Finishing decompose chain at depth %d", state.get("recursive_depth", 0))
 
-        current_action.observation = subqueries
+        # Store decomposition result
+        current_action.observation = json.dumps(decomposition, indent=2, ensure_ascii=False)
+        
+        simple_subquery = decomposition.get("simple_subquery", "")
+        complex_subquery = decomposition.get("complex_subquery", "")
+        merge_operation = decomposition.get("merge_operation", "")
+        
+        logger.info("Simple subquery: %s", simple_subquery)
+        logger.info("Complex subquery: %s", complex_subquery)
+        
+        # Process simple subquery: Launch a new PartToWholeParser instance recursively
+        simple_result = None
+        simple_subquery_actions = []
+        recursive_depth_for_simple = state.get("recursive_depth", 0) + 1
+        try:
+            logger.info("Processing simple subquery at depth %d: %s", recursive_depth_for_simple, simple_subquery)
+            recursive_input = {
+                "question": simple_subquery,
+                "conversation_history": state.get("conversation_history", []),
+                "recursive_depth": recursive_depth_for_simple,
+            }
+            logger.info("Invoking recursive parser with depth %d", recursive_depth_for_simple)
+            recursive_result = await PartToWholeParser.runnable.ainvoke(recursive_input)
+            logger.info("Recursive parser completed. Result keys: %s", list(recursive_result.keys()) if recursive_result else "None")
+            simple_result = recursive_result.get("final_sparql")
+            # Capture actions from the recursive parser
+            simple_subquery_actions = recursive_result.get("actions", [])
+            
+            if simple_result and simple_result.has_results():
+                logger.info("Simple subquery completed successfully with %d actions", len(simple_subquery_actions))
+            else:
+                logger.warning("Simple subquery did not produce valid results. Result: %s", simple_result)
+        except Exception as e:
+            logger.exception("Error processing simple subquery: %s", e)
+        
+        # Process complex subquery: Update state to use complex subquery as new question
+        # and continue with the current ReAct loop
+        original_question = state.get("question", "")
+        logger.info("Updating question to complex subquery for ReAct loop continuation")
+        
+        # Preserve existing actions (including the decompose action) and append simple subquery actions
+        # so they all appear in the log. We need to modify state directly since the reducer appends items.
+        current_actions = list(state.get("actions", []))
+        # The decompose action is already in current_actions, so we append simple subquery actions
+        updated_actions = current_actions + simple_subquery_actions
+        # Directly update the state's actions list so they appear in the log
+        state["actions"] = updated_actions
+        
+        # Update state with decomposition and results
+        return {
+            "decomposition_result": decomposition,
+            "merge_operation": merge_operation,
+            "recursive_depth": state.get("recursive_depth", 0) + 1,
+            "simple_subquery_result": simple_result,
+            "simple_subquery_actions": simple_subquery_actions,  # Store actions from recursive processing
+            "question": complex_subquery,  # Update question to complex subquery
+            "is_processing_complex_subquery": True,
+            "original_question": original_question,  # Store original for later restoration
+            "action_counter": len(updated_actions),  # Update counter to reflect all actions so far
+        }
+
+    @staticmethod
+    @chain
+    async def merge_results(state):
+        """Merge results from simple and complex subqueries"""
+        simple_result = state.get("simple_subquery_result")
+        complex_result = state.get("complex_subquery_result")
+        merge_operation = state.get("merge_operation", "")
+        
+        logger.info("Merging results at depth %d", state.get("recursive_depth", 0))
+        logger.info("Simple result: %s", simple_result)
+        logger.info("Complex result: %s", complex_result)
+        logger.info("Merge operation: %s", merge_operation)
+        
+        # For now, we'll use the complex result if available, otherwise simple result
+        # In a more sophisticated implementation, we'd parse the merge_operation
+        # and generate a SPARQL query that combines both results
+        if complex_result and complex_result.has_results():
+            merged_sparql = complex_result
+        elif simple_result and simple_result.has_results():
+            merged_sparql = simple_result
+        else:
+            logger.warning("No valid results to merge")
+            # Create an empty result
+            merged_sparql = SparqlQuery(sparql="SELECT ?x WHERE { ?x ?y ?z } LIMIT 0")
+            merged_sparql.execute()
+        
+        # Store the merged result
+        return {
+            "generated_sparqls": merged_sparql,
+            "is_processing_simple_subquery": False,
+            "is_processing_complex_subquery": False,
+        }
+
+    @staticmethod
+    @chain
+    async def max_depth_handler(state):
+        """Handle max depth reached by creating a stop action"""
+        logger.warning("Creating stop action due to max depth %d reached", PartToWholeParser.MAX_RECURSIVE_DEPTH)
+        return {
+            "actions": Action(
+                thought=f"Maximum recursive depth {PartToWholeParser.MAX_RECURSIVE_DEPTH} reached. Stopping decomposition.",
+                action_name="stop",
+                action_argument=""
+            ),
+            "action_counter": 1
+        }
+
+    @staticmethod
+    async def stop_router(state):
+        """Route after stop action"""
+        # If we're processing complex subquery, go to merge_results
+        if state.get("is_processing_complex_subquery", False):
+            return "merge_results"
+        # Otherwise, go to reporter as normal
+        return "reporter"

@@ -304,6 +304,15 @@ class Action:
 
 class PartToWholeParserState(BaseParserState):
     actions: Annotated[Sequence[Action], add_item_to_list]
+    recursive_depth: int  # Track depth of recursive decomposition
+    decomposition_result: Optional[dict]  # Stores simple/complex subqueries and merge operation
+    simple_subquery_result: Optional[SparqlQuery]  # Result from simple subquery
+    complex_subquery_result: Optional[SparqlQuery]  # Result from complex subquery
+    is_processing_simple_subquery: bool  # Flag to track if processing simple subquery
+    is_processing_complex_subquery: bool  # Flag to track if processing complex subquery
+    merge_operation: Optional[str]  # Description of how to merge results
+    original_question: Optional[str]  # Store original question when processing subqueries
+    simple_subquery_actions: Annotated[Sequence[Action], add_item_to_list]  # Actions from recursive simple subquery processing
 
 
 def state_to_dict(state: BaseParserState):

@@ -1,4 +1,19 @@
 # instruction
-Your task is to decompose the current question into two sub-questions.
+You are a decomposition agent. Your task is to break the input question into two sub-questions: one simple subquery and one complex subquery.
+
+The simple subquery should be straightforward and can be solved independently.
+The complex subquery may depend on the simple subquery's result or be more complex in nature.
+
+You MUST respond in valid JSON. 
+Return your answer in the following JSON format only:
+
+{
+  "simple_subquery": "<simple sub-question that can be solved independently>",
+  "complex_subquery": "<complex sub-question that may depend on simple subquery or be more complex>",
+  "merge_operation": "<description of how to combine the results, e.g., 'Return result = A/B' or 'Use A as input to B' or 'Combine A and B'"
+}
+
+Do not include explanations or extra text outside the JSON.
 
 # input
+{{question}}
