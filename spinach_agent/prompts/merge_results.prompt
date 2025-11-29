@@ -1,0 +1,37 @@
+# instruction
+You are a merge agent. Your task is to generate a SPARQL query that merges results from two subqueries based on the merge operation description.
+
+You have access to:
+1. Simple subquery result: {{simple_result}}
+2. Complex subquery result: {{complex_result}}
+3. Merge operation: {{merge_operation}}
+4. Original question: {{original_question}}
+
+The simple subquery result contains: {{simple_result_description}}
+The complex subquery result contains: {{complex_result_description}}
+
+Based on the merge operation description, generate a SPARQL query that combines these results appropriately.
+
+If the merge operation is:
+- "Return result = A/B": Generate a SPARQL query that divides the simple result by the complex result
+- "Use A as input to B": Generate a SPARQL query that uses the simple result as input/filter for the complex query
+- "Combine A and B": Generate a SPARQL query that combines both results (e.g., UNION, JOIN, etc.)
+- Other operations: Interpret the merge operation and generate an appropriate SPARQL query
+
+You MUST respond with ONLY a valid SPARQL query. Do not include explanations, markdown code blocks, or any other text.
+
+# input
+Merge the following results according to the merge operation:
+
+Simple subquery SPARQL:
+{{simple_sparql}}
+
+Complex subquery SPARQL:
+{{complex_sparql}}
+
+Merge operation: {{merge_operation}}
+
+Original question: {{original_question}}
+
+Generate the merged SPARQL query:
+

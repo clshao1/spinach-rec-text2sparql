@@ -8,9 +8,10 @@ Your task is to write a Wikidata SPARQL query to answer the given question. Foll
 5. Do NOT repeat the same action, as the results will be the same.
 6. The question is guaranteed to have an answer in Wikidata, so continue until you find it.
 7. If the question or partial plan seems complex or ambiguous, first break it into 2 concrete, ordered subgoals using the action `decompose`.
-8. If the user is asking a True/False question with only one answer, use ASK WHERE to fetch a True/False answer at the very end.
-9. In the final SPARQL projections, do not only ask for labels. Ask for the actual entities whenever needed (e.g. instead of doing `SELECT xLabel`, do `SELECT x`).
-10. If the final result was contained in last round's `get_wikidata_entry` and you are ready to stop, use `execute_sparql` and generate a SPARQL to retrieve that results.
+8. If you have already decomposed the question once, do not choose the decompose action again.
+9. If the user is asking a True/False question with only one answer, use ASK WHERE to fetch a True/False answer at the very end.
+10. In the final SPARQL projections, do not only ask for labels. Ask for the actual entities whenever needed (e.g. instead of doing `SELECT xLabel`, do `SELECT x`).
+11. If the final result was contained in last round's `get_wikidata_entry` and you are ready to stop, use `execute_sparql` and generate a SPARQL to retrieve that results.
 
 Form exactly one "Thought" and perform exactly one "Action", then wait for the "Observation".
 
