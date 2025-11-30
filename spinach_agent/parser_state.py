@@ -234,6 +234,8 @@ class Action:
         "execute_sparql",
         "get_property_examples",
         "stop",
+        "decompose",
+        "merge_results",
     ]
 
     # All actions have a single input parameter for now
@@ -303,6 +305,15 @@ class Action:
 
 class PartToWholeParserState(BaseParserState):
     actions: Annotated[Sequence[Action], add_item_to_list]
+    recursive_depth: int  # Track depth of recursive decomposition
+    decomposition_result: Optional[dict]  # Stores simple/complex subqueries and merge operation
+    simple_subquery_result: Optional[SparqlQuery]  # Result from simple subquery
+    complex_subquery_result: Optional[SparqlQuery]  # Result from complex subquery
+    is_processing_simple_subquery: bool  # Flag to track if processing simple subquery
+    is_processing_complex_subquery: bool  # Flag to track if processing complex subquery
+    merge_operation: Optional[str]  # Description of how to merge results
+    original_question: Optional[str]  # Store original question when processing subqueries
+    simple_subquery_actions: Annotated[Sequence[Action], add_item_to_list]  # Actions from recursive simple subquery processing
 
 
 def state_to_dict(state: BaseParserState):
@@ -317,3 +328,57 @@ def state_to_dict(state: BaseParserState):
 
 def state_to_string(state: BaseParserState):
     return json.dumps(state_to_dict(state), indent=2, ensure_ascii=False, default=vars)
+
+
+def extract_query_variables(sparql: str) -> set:
+    """
+    Extract the variable names from a SPARQL SELECT query.
+    Used in merge operations to understand query structure.
+    
+    Args:
+        sparql: SPARQL query string
+        
+    Returns:
+        Set of variable names (without the ? prefix)
+    """
+    # Match SELECT clause variables
+    select_match = re.search(r'SELECT\s+(DISTINCT\s+)?(.+?)\s+WHERE', sparql, re.IGNORECASE | re.DOTALL)
+    if not select_match:
+        return set()
+    
+    select_clause = select_match.group(2)
+    # Extract variables (starting with ?)
+    variables = re.findall(r'\?(\w+)', select_clause)
+    return set(variables)
+
+
+def describe_query_result_structure(query: SparqlQuery) -> str:
+    """
+    Generate a human-readable description of a SPARQL query's result structure.
+    
+    Args:
+        query: SparqlQuery object
+        
+    Returns:
+        String description of the query structure and results
+    """
+    if not query or not query.sparql:
+        return "No query available"
+    
+    variables = extract_query_variables(query.sparql)
+    query_type = "ASK" if query.sparql.strip().upper().startswith("ASK") else "SELECT"
+    
+    description = f"{query_type} query"
+    if variables:
+        description += f" with variables: {', '.join('?' + v for v in variables)}"
+    
+    if query.execution_result is not None:
+        if isinstance(query.execution_result, bool):
+            description += f"\nResult: {query.execution_result}"
+        elif query.has_results():
+            result_count = len(query.execution_result)
+            description += f"\nReturned {result_count} result(s)"
+        else:
+            description += "\nReturned empty result set"
+    
+    return description
