@@ -14,6 +14,7 @@ from spinach_agent.parser_state import (
     SparqlQuery,
     state_to_dict,
     state_to_string,
+    describe_query_result_structure,
 )
 from spinach_agent.parser_utils import (
     BaseParser,
@@ -650,22 +651,35 @@ class PartToWholeParser(BaseParser):
         simple_sparql = simple_result.sparql if simple_result else ""
         complex_sparql = complex_result.sparql if complex_result else ""
         
+        # Prepare detailed result descriptions with structure info and sample data
         simple_result_description = "No result available"
         if simple_result:
+            structure_desc = describe_query_result_structure(simple_result)
             if simple_result.has_results():
                 simple_result_description = f"Has results: {simple_result.results_in_table_format()[:200]}"
             else:
-                simple_result_description = "Query executed but returned no results"
+                simple_result_description = f"{structure_desc}"
         
         complex_result_description = "No result available"
         if complex_result:
+            structure_desc = describe_query_result_structure(complex_result)
             if complex_result.has_results():
                 complex_result_description = f"Has results: {complex_result.results_in_table_format()[:200]}"
             else:
-                complex_result_description = "Query executed but returned no results"
+                complex_result_description = f"{structure_desc}"
+        
+        # Create an action to document the merge operation in the action history
+        merge_action = Action(
+            thought=f"Merging results from simple and complex subqueries using operation: {merge_operation}",
+            action_name="merge_results",
+            action_argument=f"Merge operation: {merge_operation}"
+        )
         
         # Use LLM chain to generate merged SPARQL query
         try:
+            logger.info("Invoking merge chain with simple result: %s chars, complex result: %s chars", 
+                       len(simple_result_description), len(complex_result_description))
+            
             merged_sparql = await PartToWholeParser.merge_chain.ainvoke({
                 "simple_result": simple_result_description,
                 "complex_result": complex_result_description,
@@ -677,31 +691,47 @@ class PartToWholeParser(BaseParser):
             
             logger.info("LLM generated merged SPARQL: %s", merged_sparql.sparql if merged_sparql else "None")
             
-            if not merged_sparql or not merged_sparql.has_results():
+            if merged_sparql and merged_sparql.has_results():
+                merge_action.observation = f"Successfully merged results. Generated SPARQL:\n{merged_sparql.sparql}\nResult preview:\n{merged_sparql.results_in_table_format()[:300]}"
+                logger.info("Merge successful with %d results", len(merged_sparql.execution_result) if not isinstance(merged_sparql.execution_result, bool) else 1)
+            else:
                 logger.warning("LLM-generated merged SPARQL has no results, falling back to complex or simple result")
+                merge_action.observation = "LLM merge produced no results, using fallback strategy"
                 # Fallback: use complex result if available, otherwise simple result
                 if complex_result and complex_result.has_results():
                     merged_sparql = complex_result
+                    merge_action.observation += "\nUsing complex subquery result as fallback"
+                    logger.info("Using complex result as fallback")
                 elif simple_result and simple_result.has_results():
                     merged_sparql = simple_result
+                    merge_action.observation += "\nUsing simple subquery result as fallback"
+                    logger.info("Using simple result as fallback")
                 else:
                     # Create an empty result as last resort
                     merged_sparql = SparqlQuery(sparql="SELECT ?x WHERE { ?x ?y ?z } LIMIT 0")
                     merged_sparql.execute()
+                    merge_action.observation += "\nNo valid results available, returning empty result"
+                    logger.warning("No valid results from either subquery")
+                    
         except Exception as e:
             logger.exception("Error in merge chain: %s", e)
+            merge_action.observation = f"Error during merge: {str(e)}\nUsing fallback strategy"
             # Fallback to simple logic
             if complex_result and complex_result.has_results():
                 merged_sparql = complex_result
+                merge_action.observation += "\nUsing complex subquery result"
             elif simple_result and simple_result.has_results():
                 merged_sparql = simple_result
+                merge_action.observation += "\nUsing simple subquery result"
             else:
                 merged_sparql = SparqlQuery(sparql="SELECT ?x WHERE { ?x ?y ?z } LIMIT 0")
                 merged_sparql.execute()
+                merge_action.observation += "\nNo valid results available"
         
-        # Store the merged result
+        # Store the merged result and add merge action to history
         return {
             "generated_sparqls": merged_sparql,
+            "actions": merge_action,
             "is_processing_simple_subquery": False,
             "is_processing_complex_subquery": False,
         }
