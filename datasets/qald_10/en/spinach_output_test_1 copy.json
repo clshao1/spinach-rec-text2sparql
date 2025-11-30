@@ -1,7 +1,7 @@
 [
   {
     "question": "Which animal participated in a military operation with the Australian Defence Force?",
-    "predicted_sparql": "SELECT DISTINCT ?animal ?animalLabel WHERE {\n  ?animal wdt:P31 wd:Q16521 .\n  ?operation wdt:P31 wd:Q645883 .\n  ?operation wdt:P710 wd:Q93208 .\n  ?operation wdt:P710 wd:Q625657 .\n  ?operation wdt:P710 ?animal .\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". }\n} LIMIT 10",
+    "predicted_sparql": "SELECT DISTINCT ?animal ?animalLabel WHERE {\n  ?animal wdt:P31 wd:Q16521 .\n  wd:Q14665 wdt:P710 ?animal .\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". }\n} LIMIT 10",
     "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?result WHERE {?result wdt:P31 wd:Q16521. ?mop wdt:P31 wd:Q645883; wdt:P710 ?result, wd:Q625657.}",
     "f1": 1.0,
     "predicted_answer_tuple": [

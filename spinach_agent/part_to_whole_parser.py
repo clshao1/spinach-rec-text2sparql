@@ -205,7 +205,7 @@ class PartToWholeParser(BaseParser):
                     max_tokens=700,
                     temperature=1.0,
                     top_p=0.9,
-                    stop_tokens=["Observation:"],  # TODO: COMMENT OUT LATER (only included for debugging)
+                    # stop_tokens=["Observation:"],  TODO: COMMENT OUT LATER (only included for debugging)
                     keep_indentation=True,
                 )
             }
@@ -330,8 +330,33 @@ class PartToWholeParser(BaseParser):
             state["action_counter"] -= move_back_on_duplicate_action
             return "controller"
 
+        ## TODO: delete new code after testing
+        # if state["action_counter"] >= 15:
+        #     return "reporter"
+        ## end
+
+        # TODO: NEW CODE TO TEST ACTION LIMIT
         if state["action_counter"] >= 15:
-            return "reporter"
+            if (
+                len(state.get("generated_sparqls", [])) > 0
+                and state["generated_sparqls"][-1].has_results()
+            ):
+                logger.info(
+                    "Action limit reached but valid SPARQL found. Creating stop action instead of routing to reporter."
+                )
+                # Create a stop action so the stop node can process it
+                stop_action = Action(
+                    thought="Action limit reached. Using the last valid SPARQL query as the final result.",
+                    action_name="stop",
+                    action_argument=""
+                )
+                state["actions"].append(stop_action)
+                return "stop"
+            else:
+                logger.info(
+                    "Action limit reached but no valid SPARQL found. Routing to reporter."
+                )
+                return "reporter"
         
         return state["actions"][-1].action_name
 
@@ -341,13 +366,25 @@ class PartToWholeParser(BaseParser):
         current_depth = state.get("recursive_depth", 0)
         logger.info("Running for question %s with depth %d", state["question"], current_depth)
 
+        # TODO: DELETE AFTER TESTING
+        # TESTING MODE: Skip LLM and return decompose
+        TEST_MODE = True  # Set to True for testing
+        if TEST_MODE and state["action_counter"] == 0:  # Only on first action
+            logger.info("TESTING: Returning decompose action without calling LLM")
+            test_action = Action(
+                thought="I need to break this complex question into simpler subqueries",
+                action_name="decompose",
+                action_argument="Break the question into simple and complex parts"
+            )
+            return {"actions": test_action, "action_counter": 1}
+        # TESTING MODE: END
+
         # make the history shorter
         actions = state["actions"]
         action_history = display_actions(actions)
 
         logger.info("Invoking controller chain with depth %d", current_depth)
 
-        """
         action = await PartToWholeParser.controller_chain.ainvoke(
             {
                 "conversation_history": state["conversation_history"],
@@ -355,6 +392,14 @@ class PartToWholeParser(BaseParser):
                 "action_history": action_history
             }
         )
+        logger.info(
+                "Controller chose action: %s(%s)",
+                action.action_name,
+                action.action_argument
+        )
+        logger.info("Finishing controller chain with depth %d", current_depth)
+        return {"actions": action, "action_counter": 1}
+
         """
         try:
             action = await asyncio.wait_for(
@@ -364,6 +409,11 @@ class PartToWholeParser(BaseParser):
                     "action_history": action_history
                 }),
                 timeout=120.0  # 2 minute timeout
+            )
+            logger.info(
+                "Controller chose action: %s(%s)",
+                action.action_name,
+                action.action_argument
             )
         except asyncio.TimeoutError:
             logger.error("Controller chain timed out after 120 seconds")
@@ -375,6 +425,7 @@ class PartToWholeParser(BaseParser):
             ), "action_counter": 1}
         logger.info("Finishing controller chain with depth %d", current_depth)
         return {"actions": action, "action_counter": 1}
+        """
 
     @staticmethod
     @chain
@@ -471,6 +522,7 @@ class PartToWholeParser(BaseParser):
         
         # If we're processing complex subquery, handle it even without valid SPARQL
         if state.get("is_processing_complex_subquery", False):
+            logger.info("Invoking stopping logic for complex subquery")
             original_question = state.get("original_question", state["question"])
             # Check if we have a valid SPARQL result
             if (
@@ -581,6 +633,16 @@ class PartToWholeParser(BaseParser):
         simple_result = None
         simple_subquery_actions = []
         recursive_depth_for_simple = state.get("recursive_depth", 0) + 1
+
+        # Create a simple test SPARQL query for testing
+        from spinach_agent.parser_state import SparqlQuery
+        test_sparql = SparqlQuery(sparql="SELECT ?animal ?animalLabel WHERE { ?animal wdt:P31 wd:Q16521 . SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". } } LIMIT 10")
+        test_sparql.execute()  # Execute it so it has results
+        simple_result = test_sparql
+        simple_subquery_actions = []  # Empty actions for testing
+
+        # TODO: original recursive processing logic, commented out for testing
+        """
         try:
             logger.info("Processing simple subquery at depth %d: %s", recursive_depth_for_simple, simple_subquery)
             recursive_input = {
@@ -601,7 +663,8 @@ class PartToWholeParser(BaseParser):
                 logger.warning("Simple subquery did not produce valid results. Result: %s", simple_result)
         except Exception as e:
             logger.exception("Error processing simple subquery: %s", e)
-        
+        """
+
         # Process complex subquery: Update state to use complex subquery as new question
         # and continue with the current ReAct loop
         original_question = state.get("question", "")
@@ -667,12 +730,12 @@ class PartToWholeParser(BaseParser):
         # Use LLM chain to generate merged SPARQL query
         try:
             merged_sparql = await PartToWholeParser.merge_chain.ainvoke({
-                "simple_result": simple_result_description,
-                "complex_result": complex_result_description,
+                "simple_sparql": simple_sparql,
+                "simple_result_description": simple_result_description,
+                "complex_sparql": complex_sparql,
+                "complex_result_description": complex_result_description,
                 "merge_operation": merge_operation,
                 "original_question": original_question,
-                "simple_sparql": simple_sparql,
-                "complex_sparql": complex_sparql,
             })
             
             logger.info("LLM generated merged SPARQL: %s", merged_sparql.sparql if merged_sparql else "None")
@@ -745,6 +808,8 @@ class PartToWholeParser(BaseParser):
         """Route after stop action"""
         # If we're processing complex subquery, go to merge_results
         if state.get("is_processing_complex_subquery", False):
+            logger.info("Routing to merge_results after stop action at depth %d", state.get("recursive_depth", 0))
             return "merge_results"
         # Otherwise, go to reporter as normal
+        logger.info("Routing to reporter after stop action at depth %d", state.get("recursive_depth", 0))
         return "reporter"

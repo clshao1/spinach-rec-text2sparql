@@ -2,15 +2,15 @@
 You are a merge agent. Your task is to generate a SPARQL query that merges results from two subqueries based on the merge operation description.
 
 You have access to:
-1. Simple subquery result: {{simple_result}}
-2. Complex subquery result: {{complex_result}}
-3. Merge operation: {{merge_operation}}
-4. Original question: {{original_question}}
-
-The simple subquery result contains: {{simple_result_description}}
-The complex subquery result contains: {{complex_result_description}}
+1. Simple subquery SPARQL: {{simple_sparql}}
+2. Simple subquery result description: {{simple_result_description}}
+3. Complex subquery SPARQL: {{complex_sparql}}
+4. Complex subquery result description: {{complex_result_description}}
+5. Merge operation: {{merge_operation}}
+6. Original question: {{original_question}}
 
 Based on the merge operation description, generate a SPARQL query that combines these results appropriately.
+The combined result should answer the original question.
 
 If the merge operation is:
 - "Return result = A/B": Generate a SPARQL query that divides the simple result by the complex result
@@ -26,12 +26,17 @@ Merge the following results according to the merge operation:
 Simple subquery SPARQL:
 {{simple_sparql}}
 
+Simple subquery result description:
+{{simple_result_description}}
+
 Complex subquery SPARQL:
 {{complex_sparql}}
+
+Complex subquery result description:
+{{complex_result_description}}
 
 Merge operation: {{merge_operation}}
 
 Original question: {{original_question}}
 
 Generate the merged SPARQL query:
-
