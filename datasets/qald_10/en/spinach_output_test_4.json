@@ -1,0 +1,819 @@
+[
+  {
+    "question": "How is the Harz called in Mandarin Chinese?",
+    "predicted_sparql": "SELECT DISTINCT ?label WHERE {\n  wd:Q4186 rdfs:label ?label .\n  FILTER(LANG(?label) = \"zh\")\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?result WHERE {wd:Q4186 rdfs:label ?result FILTER(langMatches(lang(?result),\"zh-cn\")) }",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "label": {
+          "xml:lang": "zh",
+          "type": "literal",
+          "value": "哈爾茨山脈"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "xml:lang": "zh-cn",
+          "type": "literal",
+          "value": "哈茨山"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many airports in the city of Hamburg meet the criteria of an international airport?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE {\n  ?airport wdt:P31 wd:Q644371;\n           wdt:P131 wd:Q1627.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?ap) AS ?result) WHERE {?ap wdt:P31 wd:Q644371. ?ap wdt:P131* wd:Q1055}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      }
+    ]
+  },
+  {
+    "question": "On how many albums does Madonna perform?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?albumCount) WHERE {\n  wd:Q498365 wdt:P527 ?album.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?album) AS ?result) WHERE {?album wdt:P31 wd:Q482994. ?album wdt:P175 wd:Q1744. }",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "albumCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "29"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "53"
+        }
+      }
+    ]
+  },
+  {
+    "question": "On how many albums does Mariah Carey perform?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?album) AS ?totalAlbums) WHERE { ?album wdt:P31 wd:Q482994 ; wdt:P175 wd:Q41076 . }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?album) AS ?result) WHERE {?album wdt:P31 wd:Q482994. ?album wdt:P175 wd:Q41076. }",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "totalAlbums": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "38"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "38"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many studio albums has Lana Del Rey have?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?studioAlbumCount) WHERE {\n  wd:Q75106812 wdt:P527 ?album.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?album) AS ?result) WHERE {?album wdt:P7937 wd:Q208569. ?album wdt:P175 wd:Q37150. }",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "studioAlbumCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "7"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many ancient civilizations are there?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE {\n  ?civilization wdt:P31 wd:Q28171280.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?civ) AS ?result) WHERE {?civ wdt:P31 wd:Q28171280}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "36"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "36"
+        }
+      }
+    ]
+  },
+  {
+    "question": "In how many years did Kobe Bryant receive an NBA All-Defensive Team award?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE {\n  wd:Q25369 p:P166 ?statement.\n  ?statement ps:P166 wd:Q1465181;\n             pq:P585 ?year.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?time) AS ?result) WHERE {wd:Q25369 p:P166 ?as. ?as ps:P166 wd:Q1465181; pq:P585 ?time.}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "9"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "9"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many All-NBA Team awards have Shaquille O'Neal and Kobe Bryant received in the same year?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?overlap_count) WHERE {\n  {\n    SELECT DISTINCT ?year WHERE {\n      wd:Q169452 p:P166 ?awardStatement.\n      ?awardStatement ps:P166 wd:Q674359.\n      ?awardStatement pq:P585 ?date.\n      BIND(YEAR(?date) AS ?year)\n    }\n  }\n  VALUES ?kobe_year { \"2009\"^^xsd:gYear \"2008\"^^xsd:gYear \"2013\"^^xsd:gYear \"2003\"^^xsd:gYear \"2006\"^^xsd:gYear \"2012\"^^xsd:gYear \"2007\"^^xsd:gYear \"2010\"^^xsd:gYear \"2004\"^^xsd:gYear \"2002\"^^xsd:gYear \"2011\"^^xsd:gYear }\n  FILTER(?year = ?kobe_year)\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?time) AS ?result) WHERE {wd:Q25369 p:P166 ?as. ?as ps:P166 wd:Q674359; pq:P585 ?time. wd:Q169452 p:P166 ?as2. ?as2 ps:P166 wd:Q674359; pq:P585 ?time}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "overlap_count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "0"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "4"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many literary works did Richard Bachman write?",
+    "predicted_sparql": "SELECT DISTINCT ?work WHERE {\n  ?work wdt:P50 wd:Q39829.\n  ?work p:P50 ?statement.\n  ?statement ps:P50 wd:Q39829; pq:P742 wd:Q3495759.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?book) AS ?result) WHERE {?book wdt:P50 wd:Q39829; wdt:P31 wd:Q7725634}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "260"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many notable works does Sarah J. Maas have?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?notableWorksCount) WHERE { wd:Q20640708 wdt:P800 ?work. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?notableW) AS ?result) WHERE {wd:Q20640708 wdt:P800 ?notableW}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "notableWorksCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "3"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "3"
+        }
+      }
+    ]
+  },
+  {
+    "question": "Did Bryan Evenson work for at least one university where he was educated at?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q4963691 wdt:P69 ?educatedAt .\n  wd:Q4963691 wdt:P108 ?employedAt .\n  FILTER(?educatedAt = ?employedAt)\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {wd:Q4963691 wdt:P108 ?uni; wdt:P69 ?uni. ?uni wdt:P31/wdt:P279* wd:Q3918.}",
+    "f1": 1,
+    "predicted_answer_tuple": true,
+    "gold_answer_tuple": true
+  },
+  {
+    "question": "How many children (including apopted ones) does Jeff Bezos have with his ex-wife?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?childCount) WHERE {\n  wd:Q312556 wdt:P26 ?spouse .\n  ?spouse wdt:P40 ?child .\n  FILTER(?spouse = wd:Q10322797)\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?child) AS ?result) WHERE {wd:Q312556 p:P26 ?sps. ?sps ps:P26 ?sp. ?child wdt:P25 ?sp; wdt:P22 wd:Q312556. FILTER(EXISTS{?sps pq:P582 ?et})}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "childCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "4"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "3"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many children had Paul McCartney together with his ex-wife Linda McCartney?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE { wd:Q2599 p:P40 ?statement . ?statement ps:P40 ?child . ?statement pq:P25 wd:Q228899 . }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?child) AS ?result) WHERE {wd:Q2599 p:P26 ?sps. ?sps ps:P26 ?sp. ?child wdt:P25 ?sp; wdt:P22 wd:Q2599. FILTER((EXISTS{?sps pq:P582 ?et}) && (?sp = wd:Q228899))}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "4"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "4"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many Chinese zodiac animals are there in total?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?totalAnimals) WHERE {\n  wd:Q1976204 p:P527 ?statement.\n  ?statement ps:P527 ?animal.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?animal) AS ?result) WHERE {?animal wdt:P31 wd:Q79226802}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "totalAnimals": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "12"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "12"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many cities are part of the Pearl River Delta?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?cityCount) WHERE { wd:Q1144286 wdt:P527 ?city . ?city wdt:P31 wd:Q515 . }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?city) AS ?result) WHERE {wd:Q1144286 wdt:P527 ?city. ?city wdt:P31/wdt:P279* wd:Q515.}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "cityCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "3"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many city-states are currently in the world?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?cityStateCount) WHERE {\n  VALUES ?entity { wd:Q334 wd:Q235 wd:Q237 }.\n  ?entity wdt:P31 wd:Q133442.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?cs) AS ?result) WHERE {?cs wdt:P31 wd:Q133442}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "cityStateCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      },
+      {
+        "cityStateCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      },
+      {
+        "cityStateCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "101"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many businesses did Steve Jobs found?",
+    "predicted_sparql": "SELECT DISTINCT ?business WHERE { ?business wdt:P112 wd:Q19837. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?company) AS ?result) WHERE {?company wdt:P112 wd:Q19837; wdt:P31/wdt:P279* wd:Q4830453}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "business": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q308993"
+        }
+      },
+      {
+        "business": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q312"
+        }
+      },
+      {
+        "business": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q14116"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "2"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many countries have a democracy index higher than 7 and drive on the left side ?",
+    "predicted_sparql": "SELECT DISTINCT ?country WHERE {\n  ?country wdt:P8328 ?democracyIndex .\n  FILTER(?democracyIndex > 7) .\n  ?country wdt:P1622 wd:Q20925100 .\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?country) AS ?result) WHERE {?country wdt:P31 wd:Q6256; wdt:P8328 ?ind; wdt:P1622 wd:Q13196750 FILTER(?ind > 7)}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "13"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many countries have never been members of the UN?",
+    "predicted_sparql": "SELECT DISTINCT ?country WHERE { ?country wdt:P31 wd:Q6256 . FILTER NOT EXISTS { ?country wdt:P463 wd:Q1065 . } }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?country) AS ?result) WHERE {?country wdt:P31 wd:Q6256. FILTER(NOT EXISTS{?country p:P463/ps:P463 wd:Q1065})}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q165763"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q188736"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q200262"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q219060"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q825489"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q977566"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1147441"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q107258515"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1199"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1246"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q21203"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q25279"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q26273"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q26988"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q35"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q55"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q223"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q237"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q34020"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q34754"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "20"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many countries are on the continent of South America ?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?numberOfCountries) WHERE {\n  wd:Q18 wdt:P150 ?country.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?country) AS ?result) WHERE {?country wdt:P31 wd:Q6256; wdt:P30 wd:Q18}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "numberOfCountries": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "12"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "12"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many countries have mountains whose peaks are higher than 2000m above sea level?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?country) AS ?countryCount) WHERE {\n  ?mountain wdt:P31 wd:Q8502;  \n            wdt:P2044 ?elevation;  \n            wdt:P17 ?country.  \n  FILTER (?elevation > 2000)  \n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?country) AS ?result) WHERE {?mountain wdt:P31/wdt:P279* wd:Q8502; p:P2044/psn:P2044/wikibase:quantityAmount ?height; wdt:P17 ?country. FILTER(?height > 2000)}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "countryCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "132"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "132"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many fictional dragons are present in Game of Thrones?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE { ?dragon wdt:P31 wd:Q30170627; wdt:P1441 wd:Q23572. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?dragon) AS ?result) WHERE {?dragon wdt:P31/wdt:P279* wd:Q30170627; wdt:P1441 wd:Q23572}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "5"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "5"
+        }
+      }
+    ]
+  },
+  {
+    "question": "how many emmy awards has the tv series game of thrones won?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?award) AS ?emmyCount) WHERE { wd:Q23572 p:P166 ?statement. ?statement ps:P166 ?award. ?award wdt:P279* wd:Q123737. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?emmy) AS ?result) WHERE {wd:Q23572 wdt:P166 ?emmy. ?emmy wdt:P361/wdt:P279 wd:Q123737}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "emmyCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "0"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "5"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many films are derived from the original Ghost in the Shell Manga?",
+    "predicted_sparql": "SELECT DISTINCT ?film WHERE {\n  VALUES ?work {\n    wd:Q22575835\n    wd:Q20038326\n    wd:Q1058469\n    wd:Q1066948\n  }\n  ?work wdt:P31 wd:Q11424.\n  BIND(?work AS ?film)\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?film) AS ?result) WHERE {wd:Q92582 wdt:P4969 ?film. ?film wdt:P31/wdt:P279* wd:Q11424}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "film": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22575835"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "6"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many French kings didn't die of natural causes?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?nonNaturalDeathCount) WHERE {\n  ?king p:P39 ?statement.\n  ?statement ps:P39 wd:Q235113.\n  ?king p:P1196 ?deathStatement.\n  ?deathStatement ps:P1196 ?deathType.\n  FILTER (?deathType != wd:Q4935956) \n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?king) AS ?result) WHERE {?king wdt:P39 wd:Q18384454. MINUS{?king wdt:P1196 wd:Q3739104}}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "nonNaturalDeathCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "0"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "8"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many given names has Queen Elizabeth II ?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?givenNameCount) WHERE {\n  wd:Q9682 wdt:P735 ?givenName.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?names) AS ?result) WHERE {wd:Q9682 p:P735/ps:P735 ?names}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "givenNameCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "3"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many different female mayors did Hamburg have?",
+    "predicted_sparql": "ASK WHERE {\n  ?mayor p:P6 ?statement.\n  ?statement ps:P6 wd:Q1055.\n  ?mayor wdt:P21 wd:Q6581072.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?fm) AS ?result) WHERE {wd:Q1055 p:P6/ps:P6 ?fm. ?fm wdt:P21 wd:Q6581072}",
+    "f1": 0,
+    "predicted_answer_tuple": false,
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "0"
+        }
+      }
+    ]
+  },
+  {
+    "question": "how many head of the state does iran have?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE { wd:Q794 wdt:P35 ?headOfState. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?hos) AS ?result) WHERE {wd:Q794 p:P35/ps:P35 ?hos.}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "2"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many scholary articles have ImageNet as a subject?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE {\n  ?article wdt:P1343 wd:Q24901201 .\n  ?article wdt:P31 wd:Q13442814 .\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?art) AS ?result) WHERE {?art wdt:P31 wd:Q13442814. ?art wdt:P921 wd:Q24901201.}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "0"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "0"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many inhabitants does the birthplace of Cristiano Ronaldo have?",
+    "predicted_sparql": "SELECT DISTINCT ?population WHERE {\n  wd:Q25444 wdt:P1082 ?population.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?result WHERE {wd:Q11571 wdt:P19/wdt:P1082 ?result}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "population": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "type": "literal",
+          "value": "105795"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "type": "literal",
+          "value": "105795"
+        }
+      }
+    ]
+  }
+]

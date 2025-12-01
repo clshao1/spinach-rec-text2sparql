@@ -1,0 +1,2824 @@
+[
+  {
+    "question": "How many Japanese writers received the Nobel Prize?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?writer) AS ?count) WHERE {\n  wd:Q37922 p:P1346 ?statement.\n  ?statement ps:P1346 ?writer.\n  ?writer wdt:P27 wd:Q17.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?writer) AS ?result) WHERE {?writer wdt:P166/wdt:P279 wd:Q7191. ?writer wdt:P27 wd:Q17; wdt:P106 wd:Q36180}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "2"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "3"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many languages are widely used in India?",
+    "predicted_sparql": "SELECT DISTINCT ?language WHERE {\n  ?language wdt:P31 wd:Q34770; \n           wdt:P17 wd:Q668.   \n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?lan) AS ?result) WHERE {wd:Q668 wdt:P2936 ?lan}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1860"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5646"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q13299"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q150"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33081"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33205"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33270"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33332"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33362"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33363"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33361"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33471"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33479"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33492"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33590"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33810"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q33868"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q34035"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q27602"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q28433"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q29579"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q32480"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q32981"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56591"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56589"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56666"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56664"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q34778"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q35156"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q35361"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q35679"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q36147"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q36162"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q36586"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q36612"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q37011"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q37054"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q37059"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56235"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56306"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56308"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56332"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56350"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56348"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56357"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56368"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56378"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56399"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56400"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56412"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56431"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56478"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56500"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56551"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q2992841"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3111396"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3130374"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3250286"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3286037"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3316328"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3327420"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3335553"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3347070"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3393634"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3399725"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q4754314"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q4901729"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q4904687"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q4938727"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5031131"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5061915"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5069473"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5071694"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5088056"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5102016"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5103788"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5104247"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5105385"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5211943"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5224029"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5224058"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5268992"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5269658"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5310792"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5385061"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5516952"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5575236"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5638398"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5657463"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5762200"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5766763"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5880707"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5923435"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q5923933"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6025550"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6314963"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6345179"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6345632"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q155645"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q542564"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q568377"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q663586"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q669431"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q765418"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q784502"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1039346"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1499115"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q2475526"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q2475551"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q2567942"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q2605680"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q2605943"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q2731717"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q2809121"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q2857892"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56760"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56761"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56767"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56765"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56904"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q57004"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q58635"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7563340"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7570194"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7675798"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7682992"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7708880"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7810466"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7854914"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7856514"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7856987"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7899602"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7907798"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7915983"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7959490"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7967085"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3442442"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3450469"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3450686"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3450749"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3501850"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3501920"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3502294"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3503454"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3504321"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3508092"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3514220"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3515603"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3518362"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3535117"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3540922"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3915502"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q3915520"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q4175893"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q4697175"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7975850"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q8761579"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q8840773"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q8841054"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q8841766"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q8845881"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q10575729"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q10576453"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q11002210"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q11732445"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q11855245"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12629755"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12633440"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12633505"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12635902"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12640277"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952337"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952442"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952626"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952647"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952655"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952656"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952667"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952676"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952703"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952775"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952773"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952805"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952883"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952886"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952895"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952906"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952905"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952910"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952908"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952912"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6347757"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6350515"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6360672"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6363201"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6377671"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6400562"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6401519"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6401546"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6426342"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6430448"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6432786"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6433240"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6443304"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6444383"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6445354"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6446193"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6558822"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6583541"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6583558"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6583560"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6583595"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6666374"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6708569"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6733387"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6737795"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6740482"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6740693"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6845470"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6873206"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6902496"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6927748"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6933447"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6949473"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q6987002"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7046410"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7067615"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7127643"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7128872"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7130962"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7131211"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7133207"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7136554"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7144790"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7148323"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7155462"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7188289"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7206342"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7259044"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7288392"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7292645"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7292878"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7295692"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7296830"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7296948"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7310982"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7313205"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7365672"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7378127"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7418144"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7424639"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7494785"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7521268"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7524158"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q7563215"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952942"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12952967"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953063"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953230"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953397"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953513"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953522"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953534"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953532"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953610"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953645"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953671"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953672"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953774"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953791"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953854"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12953920"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q12976968"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q13117696"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q13548133"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q14240916"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q14623791"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q14916877"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q14916887"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q14916908"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q15549890"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q15615982"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q15622700"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q16835180"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q16841033"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q16878146"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q16886762"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q16889525"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q18457536"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q19573111"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q20983638"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q21041529"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q21179921"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q21179986"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q21282543"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q21403256"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q21403317"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q21481817"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q21481876"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q21491053"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22074616"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22077739"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22080879"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22083804"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22083815"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q22083822"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q24952038"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q25562959"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q25934578"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q30304423"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q30642960"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q30779849"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q36264959"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q42589412"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q46698638"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q47482662"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q47683644"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q50927170"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q55614048"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q55615560"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q55636327"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56071779"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q56329630"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q60785077"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q60787781"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q60788006"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q62997793"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q63257089"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q63313752"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q63339998"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q65455884"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q85809562"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q86753925"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q97356879"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q105288428"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q105360304"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q106398670"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q107175785"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q107548681"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q109421960"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q110245403"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q110251921"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q110251938"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q111360885"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q112131902"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q112760813"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q118897441"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q120287718"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q121461186"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q123124370"
+        }
+      },
+      {
+        "language": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q130641498"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "442"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many different colors can water take?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?numberOfColors) WHERE { wd:Q283 wdt:P462 ?color. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?color) AS ?result) WHERE {wd:Q283 wdt:P462 ?color}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "numberOfColors": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "5"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "5"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many locations has Georges Braque worked at (work location)?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?location) AS ?workLocationCount) WHERE {\n  wd:Q153793 wdt:P937 ?location.\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". }\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?loc) AS ?result) WHERE {wd:Q153793 wdt:P937 ?loc}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "workLocationCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "12"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "12"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many months does winter consist of in Germany?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q1311 p:P2922 ?statement .\n  ?statement ps:P2922 ?month .\n  ?statement pq:P3005 wd:Q39061 .\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?mon) AS ?result) WHERE {wd:Q1311 p:P2922 ?ms. ?ms ps:P2922 ?mon; pq:P3005/wdt:P527 ?part. wd:Q183 wdt:P361* ?part.}",
+    "f1": 0,
+    "predicted_answer_tuple": true,
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "0"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many movies does the Scream franchise have?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE { wd:Q388659 wdt:P527 ?movie. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?film) AS ?result) WHERE {?film wdt:P31 wd:Q11424; wdt:P179 wd:Q388659}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "7"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "6"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many movies has James Cameron directed prior to the year 2010?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?film) AS ?count) WHERE {\n  ?film wdt:P57 wd:Q42574; wdt:P577 ?releaseDate.\n  FILTER(?releaseDate < \"2010-01-01T00:00:00Z\"^^xsd:dateTime)\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?film) AS ?result) WHERE {?film wdt:P31 wd:Q11424; wdt:P57 wd:Q42574; wdt:P577 ?date. FILTER(YEAR(?date)<2010)}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "15"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "11"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many movies were directed by Akira Kurosawa ?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?number_of_movies) WHERE { ?film wdt:P57 wd:Q8006. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?film) AS ?result) WHERE {?film wdt:P31 wd:Q11424; wdt:P57 wd:Q8006}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "number_of_movies": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "32"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "32"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many musical scales are there?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?scaleCount) WHERE {\n  ?scale wdt:P31 wd:Q1959825.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?scale) AS ?result) WHERE {?scale wdt:P31 wd:Q179651}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "scaleCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "22"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many public holidays does the state Bavaria have in a year?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?numberOfHolidays) WHERE { wd:Q980 wdt:P832 ?holiday. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?hol) AS ?result) WHERE {wd:Q980 wdt:P832 ?hol}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "numberOfHolidays": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "13"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "13"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many literary works besides The Picture of Dorian Gray did its author write?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?work) AS ?count) WHERE {\n  ?work wdt:P50 wd:Q30875 .\n  FILTER(?work != wd:Q82464)\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?novel) AS ?result) WHERE {wd:Q82464 wdt:P50 ?aut. ?novel wdt:P31 wd:Q7725634; wdt:P50 ?aut FILTER(?novel != wd:Q82464)}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "272"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "52"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many literary works did Mark Twain write in his lifetime?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?work) AS ?count) WHERE { ?work wdt:P50 wd:Q7245. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?novel) AS ?result) WHERE {?novel wdt:P31 wd:Q7725634; wdt:P50 wd:Q7245}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "319"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "71"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many occupations did Mark Twain have?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE { wd:Q7245 wdt:P106 ?occupation. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?occ) AS ?result) WHERE {wd:Q7245 wdt:P106 ?occ}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "12"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "12"
+        }
+      }
+    ]
+  },
+  {
+    "question": "how many of spiderman perfomers are citizens of the united kingdom?",
+    "predicted_sparql": "SELECT DISTINCT ?actor WHERE {\n  wd:Q484442 wdt:P161 ?actor .\n  ?actor wdt:P27 wd:Q145 .\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?per) AS ?result) WHERE {?per wdt:P27 wd:Q145. wd:Q79037 p:P175/ps:P175 ?per}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "actor": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q234195"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "2"
+        }
+      }
+    ]
+  },
+  {
+    "question": "how many official languages does the united states of america have?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?language) AS ?count) WHERE { wd:Q30 p:P37 ?statement . ?statement ps:P37 ?language . }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?lan) AS ?result) WHERE {wd:Q30 p:P37/ps:P37 ?lan}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "3"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "3"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many official languages has Pakistan ?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?officialLanguageCount) WHERE {\n  wd:Q843 wdt:P37 ?language.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?lan) AS ?result) WHERE {wd:Q843 p:P37/ps:P37 ?lan}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "officialLanguageCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "2"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "2"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many Oscars did all the movies directed by Hayao Miyazaki combined win?",
+    "predicted_sparql": "SELECT (COUNT(*) AS ?totalOscars) WHERE {\n  {\n    SELECT DISTINCT ?movie WHERE {\n      ?category wdt:P4224 wd:Q11424;\n                p:P4224 ?statement.\n      ?statement ps:P4224 ?movie;\n                 pq:P57 wd:Q55400.\n    }\n  }\n  ?movie p:P166 ?awardStatement.\n  ?awardStatement ps:P166 ?award.\n  ?award wdt:P31 wd:Q19020.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?aw) AS ?result) WHERE {?film wdt:P57 wd:Q55400; wdt:P166 ?aw. ?aw  wdt:P31 wd:Q19020}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "totalOscars": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "0"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many paintings of Pablo Picasso were ever in a museum?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?painting) AS ?count) WHERE { ?painting wdt:P31 wd:Q3305213; wdt:P170 wd:Q5593; wdt:P195 ?museum. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?painting) AS ?result) WHERE {?painting wdt:P31 wd:Q3305213; wdt:P170 wd:Q5593; wdt:P276 ?loc. ?loc wdt:P31/wdt:P279* wd:Q33506}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1816"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1389"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many people can play \"Mensch ärgere dich nicht\" at most?",
+    "predicted_sparql": "SELECT DISTINCT ?maximumPlayers WHERE {\n  wd:Q545129 wdt:P1873 ?maximumPlayers.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?result WHERE {wd:Q545129 wdt:P1873 ?result}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "maximumPlayers": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "type": "literal",
+          "value": "8"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "type": "literal",
+          "value": "8"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many people did Oscar Pistorius kill?",
+    "predicted_sparql": "SELECT DISTINCT ?event ?eventLabel ?victim ?victimLabel WHERE {\n  wd:Q201377 p:P793 ?statement.\n  ?statement ps:P793 ?event.\n  OPTIONAL { ?statement pq:P8032 ?victim. }\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". }\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?people) AS ?result) WHERE {?people wdt:P31 wd:Q5;wdt:P157 wd:Q201377}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q16328520"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "trial of Oscar Pistorius"
+        }
+      },
+      {
+        "event": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q2252077"
+        },
+        "eventLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "shooting"
+        },
+        "victim": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q4584302"
+        },
+        "victimLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Reeva Steenkamp"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many people died due to the Great Leap Forward according to the highest estimate?",
+    "predicted_sparql": "SELECT DISTINCT ?number_of_deaths ?method WHERE {\n  wd:Q2454958 p:P1120 ?statement.\n  ?statement ps:P1120 ?number_of_deaths.\n  OPTIONAL {\n    ?statement pq:P459 ?method.\n  }\n}\nORDER BY DESC(?number_of_deaths)\nLIMIT 1",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (MAX(?d) AS ?result) WHERE {wd:Q58715 wdt:P1542/wdt:P1120 ?d}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "number_of_deaths": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "type": "literal",
+          "value": "55000000"
+        },
+        "method": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q42240"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "type": "literal",
+          "value": "55000000"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many people have won the Nobel Prize in Literature from the year it was first awarded until now?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?winner) AS ?count) WHERE {\n  ?winner wdt:P166 wd:Q37922.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?people) AS ?result) WHERE {?people wdt:P31 wd:Q5; wdt:P166 wd:Q37922}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "122"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "122"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many people live in cities in the vicinity of the Nile ?",
+    "predicted_sparql": "SELECT DISTINCT (SUM(?population) AS ?totalPopulation) WHERE { ?city wdt:P206 wd:Q3392; wdt:P1082 ?population. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (SUM (?pop) AS ?result) WHERE {?city wdt:P31 wd:Q515; wdt:P206 wd:Q3392; wdt:P1082 ?pop}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "totalPopulation": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "type": "literal",
+          "value": "132367684"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "type": "literal",
+          "value": "7999805"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many pitch classes are part of the chromatic scale?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE { wd:Q202021 p:P527 ?statement. ?statement ps:P527 ?part. }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?note) AS ?result) WHERE {wd:Q202021 wdt:P527 ?note. ?note wdt:P31 wd:Q1760309}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "21"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "21"
+        }
+      }
+    ]
+  },
+  {
+    "question": "how many plays has William Shakespeare written in the 16th century.",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE { ?play wdt:P50 wd:Q692; wdt:P577 ?date. FILTER(YEAR(?date) >= 1500 && YEAR(?date) <= 1599) }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?play) AS ?result) WHERE {?play wdt:P31 wd:Q7725634; wdt:P7937 wd:Q25379; wdt:P50 wd:Q692; wdt:P571 ?inc FILTER(YEAR(?inc) < 1600)}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "13"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many poems did Allen Ginsberg published?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE {\n  ?work wdt:P50 wd:Q6711 .\n  ?work wdt:P31 wd:Q5185279 .\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?poem) AS ?result) WHERE {?poem wdt:P31 wd:Q7725634; wdt:P50 wd:Q6711; wdt:P136/wdt:P279* wd:Q482}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "3"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many political parties have ever had seats in the German Bundestag ?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?party) AS ?count)\nWHERE {\n  ?party wdt:P31 wd:Q7278. \n  ?person wdt:P102 ?party. \n  ?person p:P39 ?statement. \n  ?statement ps:P39 wd:Q1939555. \n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?group) AS ?result) WHERE {?group wdt:P31/wdt:P279* wd:Q7278. ?group p:P1410 ?ps. ?ps pq:P194 wd:Q154797; ps:P1410 ?seats. FILTER(?seats > 0)}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "54"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "10"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many positions did Kobe Bryant play in his team?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?positionCount) WHERE { wd:Q25369 wdt:P413 ?position }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?pos) AS ?result) WHERE {wd:Q25369 wdt:P413 ?pos}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "positionCount": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "4"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "4"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many prizes are there established by Alfred Nobel ?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(*) AS ?count) WHERE {\n  wd:Q7191 wdt:P527 ?prize.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?prize) AS ?result) WHERE {wd:Q7191 wdt:P527 ?prize; wdt:P112 wd:Q23810}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "5"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "5"
+        }
+      }
+    ]
+  },
+  {
+    "question": "Did SpaceX ever operate a space mission that was a failed launch?",
+    "predicted_sparql": "SELECT DISTINCT ?mission\nWHERE {\n  ?mission wdt:P137 wd:Q193701;  \n          wdt:P31 wd:Q2133344;  \n          wdt:P793 wd:Q99654400.  \n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {?mission wdt:P31 wd:Q2133344, wd:Q99654400; wdt:P137 wd:Q193701}",
+    "f1": 0,
+    "predicted_answer_tuple": [],
+    "gold_answer_tuple": false
+  }
+]

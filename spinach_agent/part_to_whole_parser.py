@@ -344,13 +344,13 @@ class PartToWholeParser(BaseParser):
                 logger.info(
                     "Action limit reached but valid SPARQL found. Creating stop action instead of routing to reporter."
                 )
-                # Create a stop action so the stop node can process it
-                stop_action = Action(
-                    thought="Action limit reached. Using the last valid SPARQL query as the final result.",
-                    action_name="stop",
-                    action_argument=""
-                )
-                state["actions"].append(stop_action)
+                # # Create a stop action so the stop node can process it
+                # stop_action = Action(
+                #     thought="Action limit reached. Using the last valid SPARQL query as the final result.",
+                #     action_name="stop",
+                #     action_argument=""
+                # )
+                # state["actions"].append(stop_action)
                 return "stop"
             else:
                 logger.info(
@@ -368,8 +368,8 @@ class PartToWholeParser(BaseParser):
 
         # TODO: DELETE AFTER TESTING
         # TESTING MODE: Skip LLM and return decompose
-        TEST_MODE = True  # Set to True for testing
-        if TEST_MODE and state["action_counter"] == 0:  # Only on first action
+        TEST_MODE = False  # Set to True for testing
+        if TEST_MODE and state["action_counter"] == 0 and current_depth == 0:  # Only on first action
             logger.info("TESTING: Returning decompose action without calling LLM")
             test_action = Action(
                 thought="I need to break this complex question into simpler subqueries",
@@ -518,7 +518,16 @@ class PartToWholeParser(BaseParser):
     @chain
     async def stop(state):
         current_action = PartToWholeParser.get_current_action(state)
-        assert current_action.action_name == "stop"
+
+        if current_action.action_name != "stop" and state["action_counter"] >= 15:
+                if not (
+                    len(state.get("generated_sparqls", [])) > 0
+                    and state["generated_sparqls"][-1].has_results()
+                ):
+                    logger.warning("Stop called but action limit reached with no valid SPARQL")
+                    return {}
+        else:
+            assert current_action.action_name == "stop"
         
         # If we're processing complex subquery, handle it even without valid SPARQL
         if state.get("is_processing_complex_subquery", False):
@@ -634,15 +643,16 @@ class PartToWholeParser(BaseParser):
         simple_subquery_actions = []
         recursive_depth_for_simple = state.get("recursive_depth", 0) + 1
 
+        # FOR TESTING
         # Create a simple test SPARQL query for testing
-        from spinach_agent.parser_state import SparqlQuery
-        test_sparql = SparqlQuery(sparql="SELECT ?animal ?animalLabel WHERE { ?animal wdt:P31 wd:Q16521 . SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". } } LIMIT 10")
-        test_sparql.execute()  # Execute it so it has results
-        simple_result = test_sparql
-        simple_subquery_actions = []  # Empty actions for testing
+        # from spinach_agent.parser_state import SparqlQuery
+        # test_sparql = SparqlQuery(sparql="SELECT ?animal ?animalLabel WHERE { ?animal wdt:P31 wd:Q16521 . SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". } } LIMIT 10")
+        # test_sparql.execute()  # Execute it so it has results
+        # simple_result = test_sparql
+        # simple_subquery_actions = []  # Empty actions for testing
+        ## END TESTING
 
         # TODO: original recursive processing logic, commented out for testing
-        """
         try:
             logger.info("Processing simple subquery at depth %d: %s", recursive_depth_for_simple, simple_subquery)
             recursive_input = {
@@ -651,9 +661,17 @@ class PartToWholeParser(BaseParser):
                 "recursive_depth": recursive_depth_for_simple,
             }
             logger.info("Invoking recursive parser with depth %d", recursive_depth_for_simple)
-            recursive_result = await PartToWholeParser.runnable.ainvoke(recursive_input)
+            recursive_result = await PartToWholeParser.runnable.with_config(
+                {"recursion_limit": 60, "max_concurrency": 50}
+            ).ainvoke(recursive_input)
             logger.info("Recursive parser completed. Result keys: %s", list(recursive_result.keys()) if recursive_result else "None")
             simple_result = recursive_result.get("final_sparql")
+            if simple_result is None:
+                # Fallback: check if there are any generated SPARQLs
+                generated_sparqls = recursive_result.get("generated_sparqls", [])
+                if generated_sparqls and len(generated_sparqls) > 0:
+                    simple_result = generated_sparqls[-1]
+                    logger.info("Using last generated SPARQL as simple_result fallback")
             # Capture actions from the recursive parser
             simple_subquery_actions = recursive_result.get("actions", [])
             
@@ -663,7 +681,6 @@ class PartToWholeParser(BaseParser):
                 logger.warning("Simple subquery did not produce valid results. Result: %s", simple_result)
         except Exception as e:
             logger.exception("Error processing simple subquery: %s", e)
-        """
 
         # Process complex subquery: Update state to use complex subquery as new question
         # and continue with the current ReAct loop
@@ -674,11 +691,11 @@ class PartToWholeParser(BaseParser):
         ## TODO: Modify this because we don't want the simple subquery actions to be added to the state
         # Preserve existing actions (including the decompose action) and append simple subquery actions
         # so they all appear in the log. We need to modify state directly since the reducer appends items.
-        current_actions = list(state.get("actions", []))
+        # current_actions = list(state.get("actions", []))
         # The decompose action is already in current_actions, so we append simple subquery actions
-        updated_actions = current_actions + simple_subquery_actions
+        # updated_actions = current_actions + simple_subquery_actions
         # Directly update the state's actions list so they appear in the log
-        state["actions"] = updated_actions
+        # state["actions"] = updated_actions
         
         # TODO: need to update this state if I want to handle multiple levels of recursion 
         # for the complex subquery, would be multiple steps of merging results
@@ -692,7 +709,7 @@ class PartToWholeParser(BaseParser):
             "question": complex_subquery,  # Update question to complex subquery
             "is_processing_complex_subquery": True,
             "original_question": original_question,  # Store original for later restoration
-            "action_counter": len(updated_actions),  # Update counter to reflect all actions so far
+            #"action_counter": len(updated_actions),  # Update counter to reflect all actions so far
         }
 
     @staticmethod
