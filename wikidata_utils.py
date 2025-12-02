@@ -571,8 +571,10 @@ def execute_sparql(
                 return []
         if status_code >= 400:
             # 429, too many tries, would be included in this case.
-            raise  # Reraise the exception so that we can retry using tenacity
-
+            # raise  # Reraise the exception so that we can retry using tenacity
+            raise requests.exceptions.HTTPError(
+                f"HTTP {status_code} error from Wikidata SPARQL endpoint"
+            )
         if "boolean" in r:
             res = r["boolean"]
         else:
@@ -590,6 +592,12 @@ def execute_sparql(
     #         return [], SparqlExecutionStatus.TIMED_OUT  # TODO it this always the case?
     #     else:
     #         return []
+    except (requests.exceptions.JSONDecodeError, json.decoder.JSONDecodeError):  # ADDED NEW
+        # Handle JSON decode errors (empty/malformed responses from Wikidata)
+        if return_status:
+            return [], SparqlExecutionStatus.OTHER_ERROR
+        else:
+            return []
     except requests.exceptions.ConnectionError:
         if return_status:
             return [], SparqlExecutionStatus.OTHER_ERROR
@@ -615,6 +623,29 @@ def execute_sparql(
     # except Exception as e:
     #     return res
     #     logger.exception(e)
+    except requests.exceptions.RequestException as e:  # ADDED NEW
+        # This catches any RequestException that wasn't handled above
+        # and that tenacity couldn't retry successfully after 7 attempts
+        logger.warning(
+            "execute_sparql failed after all retries: %s. Query: %s",
+            str(e),
+            sparql[:200] if sparql else "None"
+        )
+        if return_status:
+            return [], SparqlExecutionStatus.OTHER_ERROR
+        else:
+            return []
+    except Exception as e:  # ADDED NEW
+        # Catch any other unexpected exceptions
+        logger.exception(
+            "Unexpected error in execute_sparql: %s. Query: %s",
+            str(e),
+            sparql[:200] if sparql else "None"
+        )
+        if return_status:
+            return [], SparqlExecutionStatus.OTHER_ERROR
+        else:
+            return []
 
     if return_status:
         return res, SparqlExecutionStatus.OK

@@ -1,0 +1,721 @@
+[
+  {
+    "question": "is there female main character in hunter x hunter?",
+    "predicted_sparql": "ASK WHERE { ?character wdt:P31 wd:Q5; wdt:P21 wd:Q6581072; wdt:P106 wd:Q33999; wdt:P361 wd:Q696071 . }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {wd:Q696071 wdt:P674 ?char. ?char wdt:P21 wd:Q6581072}",
+    "f1": 1,
+    "predicted_answer_tuple": false,
+    "gold_answer_tuple": false
+  },
+  {
+    "question": "Is water colorless?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q283 wdt:P462 wd:Q1396399.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {wd:Q283 wdt:P462 wd:Q11567495}",
+    "f1": 0,
+    "predicted_answer_tuple": true,
+    "gold_answer_tuple": false
+  },
+  {
+    "question": "Is Axel Rose a member of Guns N' Roses?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q11895 wdt:P527 wd:Q11885.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {wd:Q11885 wdt:P463 wd:Q11895}",
+    "f1": 1,
+    "predicted_answer_tuple": true,
+    "gold_answer_tuple": true
+  },
+  {
+    "question": "Is the capital of Iran bigger than that of Germany?",
+    "predicted_sparql": "ASK WHERE { wd:Q64 wdt:P2046 ?berlinArea . wd:Q3616 wdt:P2046 ?tehranArea . FILTER(?berlinArea > ?tehranArea) }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {wd:Q794 wdt:P36/wdt:P2046 ?a1. wd:Q183 wdt:P36/wdt:P2046 ?a2. FILTER(?a1 > ?a2)}",
+    "f1": 0,
+    "predicted_answer_tuple": true,
+    "gold_answer_tuple": false
+  },
+  {
+    "question": "Is the Weser longer than the Rhine?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q1650 wdt:P2043 ?weserLength .\n  wd:Q584 wdt:P2043 ?rhineLength .\n  FILTER(?weserLength > ?rhineLength)\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK{wd:Q1650 p:P2043/psn:P2043/wikibase:quantityAmount ?lenw. wd:Q584 p:P2043/psn:P2043/wikibase:quantityAmount ?lenr FILTER(?lenw > ?lenr)}",
+    "f1": 1,
+    "predicted_answer_tuple": false,
+    "gold_answer_tuple": false
+  },
+  {
+    "question": "Is Tony Blair taller than Tiger Woods?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q9545 p:P2048 ?blairHeight.\n  ?blairHeight pq:P459 wd:Q18647515; ps:P2048 ?blairHeightValue.\n  wd:Q10993 p:P2048 ?woodsHeight.\n  ?woodsHeight pq:P459 wd:Q18647515; ps:P2048 ?woodsHeightValue.\n  FILTER(?blairHeightValue > ?woodsHeightValue)\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {wd:Q9545 p:P2048/psn:P2048/wikibase:quantityAmount ?hb. wd:Q10993 p:P2048/psn:P2048/wikibase:quantityAmount ?hw FILTER(?hb > ?hw)}",
+    "f1": 1,
+    "predicted_answer_tuple": false,
+    "gold_answer_tuple": false
+  },
+  {
+    "question": "Is Chicago located at Lake Michigan?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q1297 wdt:P206 wd:Q1169 .\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {wd:Q1297 wdt:P206 wd:Q1169}",
+    "f1": 1,
+    "predicted_answer_tuple": true,
+    "gold_answer_tuple": true
+  },
+  {
+    "question": "Is the district of Höxter next to the district of Paderborn?",
+    "predicted_sparql": "ASK WHERE { wd:Q6228 wdt:P47 wd:Q6224 . }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {wd:Q6228 wdt:P47 wd:Q6224}",
+    "f1": 1,
+    "predicted_answer_tuple": true,
+    "gold_answer_tuple": true
+  },
+  {
+    "question": "Are part of the Harz mountains in the district of Nordhausen?",
+    "predicted_sparql": "ASK WHERE { wd:Q4186 wdt:P131 wd:Q7858 }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {wd:Q4186 wdt:P131 wd:Q7858}",
+    "f1": 1,
+    "predicted_answer_tuple": true,
+    "gold_answer_tuple": true
+  },
+  {
+    "question": "How many people won the Nobel Prize in Literature or Physics since 2000?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?person) AS ?count) WHERE {\n  {\n    wd:Q37922 p:P1346 ?statement.\n    ?statement ps:P1346 ?person;\n               pq:P585 ?date.\n    FILTER(YEAR(?date) >= 2000)\n  }\n  UNION\n  {\n    wd:Q38104 p:P1346 ?statement.\n    ?statement ps:P1346 ?person;\n               pq:P585 ?date.\n    FILTER(YEAR(?date) >= 2000)\n  }\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?result) AS ?resultCnt) WHERE{?result wdt:P31 wd:Q5. ?result p:P166 ?ps. {?ps ps:P166 wd:Q37922} UNION {?ps ps:P166 wd:Q38104} ?ps pq:P585 ?time. FILTER(YEAR(?time) > 2000)}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "94"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "resultCnt": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "93"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many african-american people got a star on the Hollywood Walk of Fame?",
+    "predicted_sparql": "SELECT DISTINCT (COUNT(DISTINCT ?person) AS ?count) WHERE {\n  ?person wdt:P166 wd:Q17985761;\n          wdt:P172 wd:Q49085.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?act) AS ?result) WHERE {?act wdt:P31 wd:Q5; wdt:P166 wd:Q17985761; wdt:P172 wd:Q49085}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "count": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "105"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "102"
+        }
+      }
+    ]
+  },
+  {
+    "question": "With how many countries does Australia share a border?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q408 p:P47 ?statement.\n  ?statement ps:P47 ?country;\n             pq:P1332 wd:Q6256.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT(DISTINCT ?country) AS ?result) WHERE {wd:Q408 wdt:P47 ?country. ?country p:P31/ps:P31 wd:Q6256}",
+    "f1": 0,
+    "predicted_answer_tuple": false,
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "6"
+        }
+      }
+    ]
+  },
+  {
+    "question": "How many female Chinese Empresses have there been?",
+    "predicted_sparql": "SELECT DISTINCT ?empress WHERE {\n  ?empress p:P39 ?statement .\n  ?statement ps:P39 wd:Q121029952 .\n  ?empress wdt:P21 wd:Q6581072 .\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT (COUNT (DISTINCT ?result) AS ?resultCnt) WHERE {?result wdt:P39 wd:Q268218; wdt:P21 wd:Q6581072}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "empress": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q16078598"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "resultCnt": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "5"
+        }
+      }
+    ]
+  },
+  {
+    "question": "Of which political party was Joseph Beuys a member?",
+    "predicted_sparql": "SELECT DISTINCT ?party ?partyLabel WHERE {\n  wd:Q153965 wdt:P102 ?party.\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". }\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?result WHERE{wd:Q153965 wdt:P102 ?result}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "party": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q18761823"
+        },
+        "partyLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "The Greens"
+        }
+      },
+      {
+        "party": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q422605"
+        },
+        "partyLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Aktionsgemeinschaft Unabhängiger Deutscher"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q422605"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q18761823"
+        }
+      }
+    ]
+  },
+  {
+    "question": "In what year did the Hollywood Walk of Fame open?",
+    "predicted_sparql": "SELECT DISTINCT ?year WHERE {\n  wd:Q71719 wdt:P1619 ?date.\n  BIND(YEAR(?date) AS ?year)\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?result WHERE{wd:Q71719 wdt:P1619 ?year. BIND(YEAR(?year) AS ?result) }",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "year": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1960"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1960"
+        }
+      }
+    ]
+  },
+  {
+    "question": "on which video streaming services can i watch hunter x hunter anime series?",
+    "predicted_sparql": "SELECT DISTINCT ?streamingService ?streamingServiceLabel WHERE {\n  wd:Q70209136 wdt:P750 ?streamingService .\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". }\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?result WHERE{wd:Q70209136 wdt:P750 ?result. ?result wdt:P31 wd:Q59152282 }",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "streamingService": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q907311"
+        },
+        "streamingServiceLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Netflix"
+        }
+      },
+      {
+        "streamingService": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1142035"
+        },
+        "streamingServiceLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Crunchyroll"
+        }
+      },
+      {
+        "streamingService": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1630304"
+        },
+        "streamingServiceLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Hulu"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q907311"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1142035"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1630304"
+        }
+      }
+    ]
+  },
+  {
+    "question": "In what year did the district of Höxter come into existence?",
+    "predicted_sparql": "SELECT DISTINCT ?inceptionDate WHERE {\n  wd:Q1351319 wdt:P571 ?inceptionDate.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?result WHERE{wd:Q6228 wdt:P571 ?time. BIND(YEAR(?time) AS ?result)}",
+    "f1": 0.0,
+    "predicted_answer_tuple": [
+      {
+        "inceptionDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "1816-01-01T00:00:00Z"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "type": "literal",
+          "value": "1975"
+        }
+      }
+    ]
+  },
+  {
+    "question": "Is the Linux Foundation verified on Twitter?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q858851 p:P6552 ?twitterAccountStatement .\n  ?twitterAccountStatement ps:P6552 ?twitterAccount .\n  ?twitterAccountStatement pq:P1659 wd:Q58413209 .\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK{wd:Q858851 p:P2002/pq:P1552 wd:Q28378282}",
+    "f1": 0,
+    "predicted_answer_tuple": false,
+    "gold_answer_tuple": true
+  },
+  {
+    "question": "Were Angela Merkel and Tony Blair born in the same year?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q567 wdt:P569 ?dateOfBirthMerkel .\n  wd:Q9545 wdt:P569 ?dateOfBirthBlair .\n  FILTER(YEAR(?dateOfBirthMerkel) = YEAR(?dateOfBirthBlair))\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {wd:Q567 wdt:P569 ?da. wd:Q9545 wdt:P569 ?dt. FILTER(YEAR(?dt) = YEAR(?da))}",
+    "f1": 1,
+    "predicted_answer_tuple": false,
+    "gold_answer_tuple": false
+  },
+  {
+    "question": "Do more than 100000000 people speak Japanese?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q5287 p:P1098 ?statement.\n  ?statement ps:P1098 ?value.\n  FILTER(?value > 100000000)\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {wd:Q5287 wdt:P1098 ?num. FILTER(?num > 100000000)}",
+    "f1": 1,
+    "predicted_answer_tuple": true,
+    "gold_answer_tuple": true
+  },
+  {
+    "question": "Tell me all the cast members of the film Red Notice directed by Rawson Marshall Thurber ?",
+    "predicted_sparql": "SELECT DISTINCT ?cast_member ?cast_memberLabel ?character_role ?character_roleLabel WHERE { wd:Q58815001 wdt:P161 ?cast_member. OPTIONAL { ?cast_member p:P161 ?statement. ?statement pq:P4633 ?character_role. } SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". } }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?result WHERE{wd:Q58815001 wdt:P57 wd:Q2745616; wdt:P161 ?result}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "cast_member": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q192682"
+        },
+        "cast_memberLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Ryan Reynolds"
+        }
+      },
+      {
+        "cast_member": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1723645"
+        },
+        "cast_memberLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Vincenzo Amato"
+        }
+      },
+      {
+        "cast_member": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q98042831"
+        },
+        "cast_memberLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Ritu Arya"
+        }
+      },
+      {
+        "cast_member": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q185654"
+        },
+        "cast_memberLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Gal Gadot"
+        }
+      },
+      {
+        "cast_member": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q311980"
+        },
+        "cast_memberLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Chris Diamantopoulos"
+        }
+      },
+      {
+        "cast_member": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q16238788"
+        },
+        "cast_memberLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Pascal Petardi"
+        }
+      },
+      {
+        "cast_member": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q10738"
+        },
+        "cast_memberLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Dwayne Johnson"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q185654"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q192682"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q311980"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q1723645"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q16238788"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q98042831"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q10738"
+        }
+      }
+    ]
+  },
+  {
+    "question": "The first album of Jay Chou",
+    "predicted_sparql": "SELECT DISTINCT ?album ?albumLabel ?releaseDate WHERE { ?album wdt:P175 wd:Q238819; wdt:P31 wd:Q482994; wdt:P577 ?releaseDate. SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". } } ORDER BY ASC(?releaseDate) LIMIT 1",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?result WHERE{?result wdt:P31 wd:Q482994; wdt:P175 wd:Q238819; wdt:P577 ?date. } ORDER BY ASC(?date) LIMIT 1",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "album": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q221115"
+        },
+        "albumLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Jay"
+        },
+        "releaseDate": {
+          "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type": "literal",
+          "value": "2000-11-06T00:00:00Z"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q221115"
+        }
+      }
+    ]
+  },
+  {
+    "question": "Through which countries does the Danube go?",
+    "predicted_sparql": "SELECT DISTINCT ?country ?countryLabel WHERE {\n  wd:Q1653 wdt:P17 ?country.\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". }\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?result WHERE{wd:Q1653 wdt:P17 ?result}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q403"
+        },
+        "countryLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Serbia"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q214"
+        },
+        "countryLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Slovakia"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q28"
+        },
+        "countryLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Hungary"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q224"
+        },
+        "countryLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Croatia"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q218"
+        },
+        "countryLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Romania"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q219"
+        },
+        "countryLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Bulgaria"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q217"
+        },
+        "countryLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Moldova"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q183"
+        },
+        "countryLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Germany"
+        }
+      },
+      {
+        "country": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q40"
+        },
+        "countryLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Austria"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q403"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q28"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q40"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q183"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q214"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q218"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q219"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q217"
+        }
+      },
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q224"
+        }
+      }
+    ]
+  },
+  {
+    "question": "What do sperm whales mainly eat?",
+    "predicted_sparql": "SELECT DISTINCT ?food ?foodLabel WHERE {\n  wd:Q81214 wdt:P1034 ?food.\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". }\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT DISTINCT ?result WHERE{wd:Q81214 wdt:P1034 ?result}",
+    "f1": 1.0,
+    "predicted_answer_tuple": [
+      {
+        "food": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q81900"
+        },
+        "foodLabel": {
+          "xml:lang": "en",
+          "type": "literal",
+          "value": "Teuthida"
+        }
+      }
+    ],
+    "gold_answer_tuple": [
+      {
+        "result": {
+          "type": "uri",
+          "value": "http://www.wikidata.org/entity/Q81900"
+        }
+      }
+    ]
+  },
+  {
+    "question": "Was Frida Kahlo a surrealist?",
+    "predicted_sparql": "ASK WHERE { wd:Q5588 wdt:P135 wd:Q39427 }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK{wd:Q5588 wdt:P135 wd:Q39427}",
+    "f1": 1,
+    "predicted_answer_tuple": true,
+    "gold_answer_tuple": true
+  },
+  {
+    "question": "Was Funny Games and its remake directed by different persons?",
+    "predicted_sparql": "ASK WHERE { wd:Q696928 wdt:P57 ?director . wd:Q951002 wdt:P57 ?director . }",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK{wd:Q696928 wdt:P57 ?dir. wd:Q951002 wdt:P57 ?dir2. FILTER(?dir != ?dir2)}",
+    "f1": 0,
+    "predicted_answer_tuple": true,
+    "gold_answer_tuple": false
+  },
+  {
+    "question": "Was Google founded by Bill Gates?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q95 wdt:P112 wd:Q5284.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK{wd:Q95 wdt:P112 wd:Q5284}",
+    "f1": 1,
+    "predicted_answer_tuple": false,
+    "gold_answer_tuple": false
+  },
+  {
+    "question": "Was it the cancer that caused the death of Steve Jobs who was the CEO of Apple?",
+    "predicted_sparql": "ASK WHERE {\n  wd:Q19837 wdt:P509 wd:Q212961.\n}",
+    "gold_sparql": "PREFIX bd: <http://www.bigdata.com/rdf#> PREFIX dct: <http://purl.org/dc/terms/> PREFIX geo: <http://www.opengis.net/ont/geosparql#> PREFIX p: <http://www.wikidata.org/prop/> PREFIX pq: <http://www.wikidata.org/prop/qualifier/> PREFIX ps: <http://www.wikidata.org/prop/statement/> PREFIX psn: <http://www.wikidata.org/prop/statement/value-normalized/> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX wd: <http://www.wikidata.org/entity/> PREFIX wds: <http://www.wikidata.org/entity/statement/> PREFIX wdt: <http://www.wikidata.org/prop/direct/> PREFIX wdv: <http://www.wikidata.org/value/> PREFIX wikibase: <http://wikiba.se/ontology#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ASK {wd:Q19837 wdt:P509/wdt:P279* wd:Q12078 }",
+    "f1": 1,
+    "predicted_answer_tuple": true,
+    "gold_answer_tuple": true
+  }
+]
