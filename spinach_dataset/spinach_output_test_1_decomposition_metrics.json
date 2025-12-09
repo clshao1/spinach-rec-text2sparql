@@ -1,0 +1,110 @@
+{
+  "total_questions": 50,
+  "decomposition_usage": {
+    "chose_decompose": 11,
+    "never_decomposed": 39,
+    "decomposed_once": 9,
+    "decomposed_multiple": 2
+  },
+  "decomposition_success": {
+    "simple_subquery_success": 4,
+    "complex_subquery_success": 4,
+    "both_succeeded": 3,
+    "both_failed": 6,
+    "simple_failed_complex_succeeded": 1,
+    "simple_succeeded_complex_failed": 1
+  },
+  "merge_success": {
+    "merge_attempted": 11,
+    "merge_succeeded": 8,
+    "merge_failed": 0,
+    "merge_fallback_to_complex": 3,
+    "merge_fallback_to_simple": 0,
+    "merge_unknown": 0
+  },
+  "action_efficiency": {
+    "avg_actions_without_decompose": [
+      4,
+      5,
+      10,
+      5,
+      4,
+      11,
+      4,
+      1,
+      5,
+      9,
+      5,
+      4,
+      15,
+      4,
+      15,
+      4,
+      8,
+      6,
+      4,
+      9,
+      5,
+      15,
+      6,
+      8,
+      4,
+      7,
+      6,
+      8,
+      16,
+      14,
+      12,
+      6,
+      6,
+      4,
+      9,
+      4,
+      15,
+      9,
+      7
+    ],
+    "avg_actions_with_decompose": [
+      15,
+      7,
+      12,
+      9,
+      14,
+      15,
+      15,
+      13,
+      10
+    ],
+    "avg_simple_subquery_actions": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "avg_actions_without_decompose_avg": 7.512820512820513,
+    "avg_actions_with_decompose_avg": 12.222222222222221,
+    "avg_simple_subquery_actions_avg": 1.0
+  },
+  "merge_operations": {
+    "Use A as input to B": 3,
+    "Use A (definition of EHRI authority control) to understand the context for B (cataloged items).": 1,
+    "Use A (list of countries) as input to B (determine official languages and count them).": 1,
+    "Use A (types of items) as input to B (count and order items by type)": 1,
+    "Use A (list of destroyers with vessel class and operator) as input to B (filter destroyers based on the operator not being in the vessel class's list of operators).": 1,
+    "Use A (list of 20 most common properties) as input to B (calculate percentage for each property)": 1,
+    "Use A (list of items) as input to B to retrieve synonyms, roles, and page numbers for each item.": 1,
+    "Use A (definition) to validate and filter the results from B (list of individuals and relationships).": 1,
+    "Use A (list of publishers) as input to B (retrieve detailed information for each publisher).": 1
+  },
+  "recursive_depth_distribution": {
+    "1": 11,
+    "0": 39
+  }
+}

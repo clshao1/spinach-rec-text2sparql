@@ -1,0 +1,54 @@
+{
+  "total_questions": 10,
+  "decomposition_usage": {
+    "chose_decompose": 2,
+    "never_decomposed": 8,
+    "decomposed_once": 2,
+    "decomposed_multiple": 0
+  },
+  "decomposition_success": {
+    "simple_subquery_success": 1,
+    "complex_subquery_success": 0,
+    "both_succeeded": 0,
+    "both_failed": 0,
+    "simple_failed_complex_succeeded": 0,
+    "simple_succeeded_complex_failed": 1
+  },
+  "merge_success": {
+    "merge_attempted": 1,
+    "merge_succeeded": 1,
+    "merge_failed": 0,
+    "merge_fallback_to_complex": 0,
+    "merge_fallback_to_simple": 0,
+    "merge_unknown": 0
+  },
+  "action_efficiency": {
+    "avg_actions_without_decompose": [
+      7,
+      7,
+      15,
+      14,
+      6,
+      5,
+      5,
+      6
+    ],
+    "avg_actions_with_decompose": [
+      15,
+      15
+    ],
+    "avg_simple_subquery_actions": [
+      1
+    ],
+    "avg_actions_without_decompose_avg": 8.125,
+    "avg_actions_with_decompose_avg": 15.0,
+    "avg_simple_subquery_actions_avg": 1.0
+  },
+  "merge_operations": {
+    "Combine A and B to list each architectural structure along with its latitude and longitude.": 1
+  },
+  "recursive_depth_distribution": {
+    "0": 9,
+    "1": 1
+  }
+}
