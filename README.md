@@ -1,51 +1,39 @@
 <p align="center">
-    <img src="./images/Wikidata-logo-en.svg" width="100px" alt="Wikidata" />
     <h1 align="center">
-        <b>SPINACH: <u>SP</u>ARQL-Based <u>I</u>nformation <u>Na</u>vigation for <u>Ch</u>allenging Real-World Questions</b>
-        <br>
-        <a href="https://arxiv.org/abs/2407.11417">
-            <img src="https://img.shields.io/badge/cs.CL-2407.11417-b31b1b" alt="arXiv">
-        </a>
-        <a href="https://github.com/stanford-oval/spinach/stargazers">
-            <img src="https://img.shields.io/github/stars/stanford-oval/spinach?style=social" alt="Github Stars">
-        </a>
+        <b>Recursive Decomposition for SPINACH: A Text-to-SPARQL Semantic Parsing Extension</b>
     </h1>
 </p>
 
 <p align="center">
-    Online Chatbot:
-    <a href="https://spinach.genie.stanford.edu" target="_blank">
-        https://spinach.genie.stanford.edu
+    Full Github:
+    <a href="https://github.com/clshao1/spinach-rec-text2sparql/tree/claire" target="_blank">
+        https://github.com/clshao1/spinach-rec-text2sparql/tree/claire
     </a>
     <br>
 </p>
 
 # About
 
-**The SPINACH dataset**: Current KBQA datasets lack real-world complexity. The SPINACH KBQA dataset, collected from Wikidata's Request a Query sites, is the first to cover both natural questions and complex SPARQLs
+This repository extends the original SPINACH agent with a recursive decomposition and merge mechanism for handling complex, multi-constraint SPARQL queries. Our approach introduces new `decompose` and `merge` actions inside the ReAct-based controller, enabling the agent to split difficult questions into smaller subqueries, solve them independently, and recombine results into a final SPARQL program.
 
-**The SPINACH agent**: The SPINACH agent is a new KBQA approach that mimics expert human SPARQL writing, achieving SOTA on many KBQA datasets. You can try it at https://spinach.genie.stanford.edu
-
-For more details, check out this blog post on [Wikimedia Research Newsletter](https://meta.m.wikimedia.org/wiki/Research:Newsletter/2024/November).
+For more details on the original SPINACH agent and datasets, check out [the SPINACH Github](https://github.com/stanford-oval/spinach).
 
 # Folder Structure
-`datasets/` contains all prior dataset files. Predictions for the SPINACH agent used in the paper can be found at:
-- `datasets/qald_7_task4/spinach_output_test.json` for QALD-7
-- `datasets/qald_9_plus/en/spinach_output_test.json` for QALD-9-plus
-- `datasets/qald_10/en/spinach_output_test.json` for QALD-10 full set (the prediction for the ToG subset can be retrieved by uncommenting the portion using `get_tog_baseline_questions` in `evaluate_file.py`)
-- `datasets/wikiwebquestions/spinach_output_dev.json` and `datasets/wikiwebquestions/spinach_output_test.json` for WikiWebQuestions
+`datasets/` contains all prior dataset files. Predictions for our modified SPINACH agent used in the paper can be found at:
+- `spinach_dataset/` for SPINACH
+- `datasets/qald_10/en/` for QALD-10 full set
+Due to compute reasons, we needed to run prediction and evalauation on some of the datasets using sub-samples (smaller batch sizes), so some of the evaluation results may be broken up into multiple output and log files.
 
-`spinach_dataset/` contains the dev and test set of the SPINACH dataset. The SPINACH agent's outputs are also stored in this directory.
+`spinach_agent/` contains implementation of the modified, recursive decomposition SPINACH agent.
 
-`spinach_agent/` contains the implementation for the SPINACH agent.
+`spinach_agent/prompts/` contains all of the prompts used for LLM response generation.
 
-`notebooks/` stores various Jupyter notebooks used to crawl the initial conversations and compute dataset complexity metrics.
-
-`tasks/` stores the files declaring how to use the `invoke` command.
+`datasets/` and `spinach_dataset/` contains all of our datasets and evaluation results. In particular, we benchmarked on QALD-10 and the SPINACH dataset.
 
 `tests/` contains all tests, which use `pytest`. You can run all tests by running `invoke tests`. `test_eval.py`, which stores test cases for the row-major F1 implementation, can be run via `python tests/test_eval.py`.
 
 # Running the SPINACH agent and evaluating results
+Since we extended our implementation off of the original SPINACH agent, the below set-up is borrowed from the original SPINACH agent.
 
 ## Set up environment
 
@@ -81,23 +69,4 @@ semantic_parser_class.initialize(engine=args.engine) # e.g. "gpt-4o"
 chain_output = semantic_parser_class.run_batch(
     questions, # this should be a dict of {"question": "...", "conversation_history": [...]}, conversation_history can be empty list if running on single-turn questions
 )
-```
-
-
-# License
-
-The code in this repo is released under Apache License, version 2.0. The SPINACH dataset, derived from the Wikidata Request a Query forum, is released under the CC BY-SA 4.0 license, the same license that covers the forum.
-
-# Citation
-
-```
-@misc{liu2024spinachsparqlbasedinformationnavigation,
-      title={SPINACH: SPARQL-Based Information Navigation for Challenging Real-World Questions}, 
-      author={Shicheng Liu and Sina J. Semnani and Harold Triedman and Jialiang Xu and Isaac Dan Zhao and Monica S. Lam},
-      year={2024},
-      eprint={2407.11417},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2407.11417}, 
-}
 ```
