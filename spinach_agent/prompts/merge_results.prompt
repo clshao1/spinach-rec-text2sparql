@@ -18,7 +18,10 @@ If the merge operation is:
 - "Combine A and B": Generate a SPARQL query that combines both results (e.g., UNION, JOIN, etc.)
 - Other operations: Interpret the merge operation and generate an appropriate SPARQL query
 
-You MUST respond with ONLY a valid SPARQL query. Do not include explanations, markdown code blocks, or any other text.
+Important guidelines:
+- You MUST respond with ONLY a valid SPARQL query. 
+- Do not include explanations, markdown code blocks, or any other text outside the query.
+- Preserve the variable names from the original queries where possible
 
 # input
 Merge the following results according to the merge operation:
